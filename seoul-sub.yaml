@@ -1,8 +1,7 @@
-# 首尔自建代理 - 订阅配置 (v2)
+# 首尔自建代理 - 订阅配置 (v3)
 # 服务器: 阿里云 韩国首尔 (8.220.209.242)
-# 延迟: ~45ms (黄石)
-# Shadowsocks: chacha20-ietf-poly1305 / 密码 9664
-# SOCKS5:1080 / HTTP:1082
+# VMess: 端口8081 | SS: 暂无 | SOCKS5/HTTP: 1080/1082
+# UUID: b831381d-6324-4c53-937e-6cec0ad64901
 
 port: 7890
 socks-port: 7891
@@ -11,7 +10,7 @@ mode: Rule
 log-level: info
 
 proxies:
-  - {name: 🇰🇷 首尔SS, server: 8.220.209.242, port: 8081, type: ss, cipher: chacha20-ietf-poly1305, password: 9664, udp: true}
+  - {name: 🇰🇷 首尔VMess, server: 8.220.209.242, port: 8081, type: vmess, uuid: b831381d-6324-4c53-937e-6cec0ad64901, alterId: 0, cipher: auto, tls: false, udp: true}
   - {name: 🇰🇷 首尔SOCKS5, server: 8.220.209.242, port: 1080, type: socks5, username: syin, password: 9664, udp: true}
   - {name: 🇰🇷 首尔HTTP, server: 8.220.209.242, port: 1082, type: http, username: syin, password: 9664}
 
@@ -19,7 +18,7 @@ proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
-      - 🇰🇷 首尔SS
+      - 🇰🇷 首尔VMess
       - 🇰🇷 首尔SOCKS5
       - 🇰🇷 首尔HTTP
       - DIRECT
