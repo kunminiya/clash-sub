@@ -1,0 +1,26 @@
+# 首尔自建代理 - 订阅配置
+# 服务器: 阿里云 韩国首尔 (8.220.209.242)
+# 延迟: ~45ms (黄石)
+# SOCKS5:1080 / HTTP:1082
+# 账号: syin / 9664
+
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+
+proxies:
+  - {name: 🇰🇷 首尔SOCKS5, server: 8.220.209.242, port: 1080, type: socks5, username: syin, password: 9664, udp: true}
+  - {name: 🇰🇷 首尔HTTP, server: 8.220.209.242, port: 1082, type: http, username: syin, password: 9664}
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - 🇰🇷 首尔SOCKS5
+      - 🇰🇷 首尔HTTP
+      - DIRECT
+
+rules:
+  - MATCH,🚀 节点选择
